@@ -1,2 +1,0 @@
-# yukumoto
-Yukumoto Home pages
