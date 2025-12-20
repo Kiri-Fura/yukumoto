@@ -1,0 +1,8 @@
+ビデオの記述ルール
+
+const myVideos: Video[] =[
+  {
+    title: "",//動画タイトル
+    thumbnail: "", // ドライブ直リンク
+    url: ""//動画url
+  }
