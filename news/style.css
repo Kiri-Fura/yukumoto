@@ -1,0 +1,85 @@
+body {
+  background-color:#fcf8e6;
+}
+.navi ul{
+  list-style: none;
+  padding:0px;
+  margin:0px;
+  display: flex;
+  background-color:#fff;
+}
+
+.navi li{
+  margin-right:20px;
+}
+
+.navi a{
+  text-decoration:none;
+  color:#333;
+  font-weight: bold;
+  display:black;
+  padding:10px 15px;
+  font-size:20px;
+}
+
+.hedder-image{
+  background-image: url("https://lh3.googleusercontent.com/d/1SKTSF_wK6XD3-PsEUvY9NSZZkowwVWc4");
+  background-size:cover;
+  background-position: center 10%;
+  height:400px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+}
+
+.hedder-connect h1{
+  font-size:3rem;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.news-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.news-item {
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+}
+
+.news-meta {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.news-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.news-badge {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: white;
+}
+
+/* カテゴリごとの色分け */
+.badge-動画 { background-color: #ff0000; } /* YouTubeの赤 */
+.badge-サイト { background-color: #007bff; } /* 青 */
+.badge-その他 { background-color: #6c757d; } /* グレー */
+
+.news-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.news-content {
+  color: #333;
+  line-height: 1.6;
+}
