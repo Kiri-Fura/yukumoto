@@ -1,4 +1,9 @@
 "use strict";
+interface Video {
+  title: string;
+  thumbnail: string;
+  url: string;
+}
 function renderVideos() {
     const grid = document.getElementById('video-grid');
     if (!grid)
