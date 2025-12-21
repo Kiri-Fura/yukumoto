@@ -1,4 +1,11 @@
 "use strict";
+const myVideos: Video[] =[
+  {
+    title: "フォトナ版ブレインロットPart.1",//動画タイトル
+    thumbnail: "https://lh3.googleusercontent.com/d/1MGd7qc3cvCn1q20VJz5VpZU0xxRTaeIa", // ドライブ直リンク
+    url: "https://kiri-fura.github.io/yukumoto/haruki-1/index.html"//動画url
+  }
+    ];
 function renderVideos() {
     const grid = document.getElementById('video-grid');
     if (!grid)
