@@ -1,21 +1,25 @@
 "use strict";
 
-// 型指定（: Video[]）を削除して、純粋な配列にします
+// 1. 動画のデータを定義（= を忘れないように注意！）
 const myVideos = [
   {
     title: "フォトナ版ブレインロットPart.1",
-    thumbnail: "https://lh3.googleusercontent.com/d/1MGd7qc3cvCn1q20VJz5VpZU0xxRTaeIa", // 実際には有効な画像URLが必要です
+    thumbnail: "https://lh3.googleusercontent.com/d/1MGd7qc3cvCn1q20VJz5VpZU0xxRTaeIa", 
     url: "https://kiri-fura.github.io/yukumoto/haruki-1/index.html"
   }
 ];
 
+// 2. 動画を画面に表示する関数
 function renderVideos() {
   const grid = document.getElementById('video-grid');
+  
+  // gridが見つからない場合はエラーを出して止める
   if (!grid) {
-    console.error("video-gridが見つかりません");
+    console.error("エラー: HTMLの中に 'video-grid' というIDが見つかりません。");
     return;
   }
-  
+
+  // HTMLの中身を書き換える
   grid.innerHTML = myVideos.map(video => `
     <div class="video-card" onclick="location.href='${video.url}'" style="cursor: pointer;">
       <img src="${video.thumbnail}" class="video-thumbnail" alt="thumbnail">
@@ -26,5 +30,5 @@ function renderVideos() {
   `).join('');
 }
 
-// ページが読み込まれたら実行
+// 3. ページが全部読み込まれたら実行する
 window.addEventListener('load', renderVideos);
