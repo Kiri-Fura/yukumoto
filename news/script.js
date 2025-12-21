@@ -1,10 +1,10 @@
 "use strict";
 const newsData = [
     {
-        date: "2025/12/20",
+        date: "2025/12/21",
         category: "動画",
-        title: "【新着】マイクラスキン比較動画をアップ！",
-        content: "最新の動画をGoogleドライブ経由で視聴できるようになりました。"
+        title: "【新着】フォトナ版ブレインロットPart.1",
+        content: "フォトナ版ブレインロットPart.1を投稿しました。見てくれたらうれしいです。"
     }
 ];
 function renderNews() {
