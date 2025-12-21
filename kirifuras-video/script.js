@@ -2,11 +2,6 @@
 
 // 1. 動画のデータを定義（= を忘れないように注意！）
 const myVideos = [
-  {
-    title: "フォトナ版ブレインロットPart.1",
-    thumbnail: "https://lh3.googleusercontent.com/d/1MGd7qc3cvCn1q20VJz5VpZU0xxRTaeIa", 
-    url: "https://kiri-fura.github.io/yukumoto/haruki-1/index.html"
-  }
 ];
 
 // 2. 動画を画面に表示する関数
