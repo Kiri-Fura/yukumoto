@@ -1,4 +1,9 @@
 "use strict";
+interface Video {
+  title: string;
+  thumbnail: string;
+  url: string;
+}
 const myVideos: Video[] =[
   {
     title: "フォトナ版ブレインロットPart.1",//動画タイトル
