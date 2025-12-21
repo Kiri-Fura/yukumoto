@@ -5,7 +5,14 @@ const newsData = [
         category: "動画",
         title: "【新着】フォトナ版ブレインロットPart.1",
         content: "フォトナ版ブレインロットPart.1を投稿しました。見てくれたらうれしいです。"
+    },
+    {
+        date: "2025/12/21",
+        category: "サイト",
+        title: "ホームページを作り直しました",
+        content: "ホームページを見やすく、作り直しました。これで今週の土日の2日を棒に振ってますwww"
     }
+    
 ];
 function renderNews() {
     const newsList = document.getElementById('news-list');
