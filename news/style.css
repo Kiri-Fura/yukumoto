@@ -72,7 +72,7 @@ body {
 /* カテゴリごとの色分け */
 .badge-動画 { background-color: #ff0000; } /* YouTubeの赤 */
 .badge-サイト { background-color: #007bff; } /* 青 */
-.badge-その他 { background-color: #6c757d; } /* グレー */
+.badge-社長のBlog { background-color: #d1d1d1; } /* グレー */
 
 .news-title {
   font-size: 1.2rem;
