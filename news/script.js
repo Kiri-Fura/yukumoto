@@ -1,6 +1,13 @@
 "use strict";
 const newsData = [
         {
+        date: "2025/12/27",
+        category: "社長のBlog",
+        title: "ハルキくんとJAVA版してきた",
+        content: "JAVA版を買ったハルキくんとJAVA版でハイピした。楽しかった"
+        },
+        
+        {
         date: "2025/12/21",
         category: "サイト",
         title: "ホームページを作り直しました",
