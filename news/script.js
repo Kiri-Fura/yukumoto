@@ -1,5 +1,11 @@
 "use strict";
 const newsData = [
+                {
+        date: "2025/12/31",
+        category: "社長のBlog",
+        title: "今年も1年あざました",
+        content: "もう2025が終わる！？早いって(笑)なんかいろいろあったな。今は紅白見てます。"
+        },
         {
         date: "2025/12/29",
         category: "社長のBlog",
