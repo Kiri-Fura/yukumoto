@@ -42,7 +42,27 @@
 </section>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/react/19.1.1/cjs/react.production.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/19.1.1/cjs/react-dom.production.min.js'></script><script  src="./script.js"></script>
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDpegFs8gltCQ23WyP8lDS-tU82M4VtigM",
+  authDomain: "yukumoto-homepage.firebaseapp.com",
+  projectId: "yukumoto-homepage",
+  storageBucket: "yukumoto-homepage.firebasestorage.app",
+  messagingSenderId: "329174327198",
+  appId: "1:329174327198:web:c2eb94bded11e93427408f",
+  measurementId: "G-Y9V5K84QG0"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
   </body>
   
 </html>
