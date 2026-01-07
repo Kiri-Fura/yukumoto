@@ -42,7 +42,8 @@
 </section>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/react/19.1.1/cjs/react.production.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/19.1.1/cjs/react-dom.production.min.js'></script><script  src="./script.js"></script>
-// Import the functions you need from the SDKs you need
+<script type="module">
+    // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -63,6 +64,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+</script>
   </body>
   
 </html>
