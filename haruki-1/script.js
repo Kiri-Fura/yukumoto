@@ -1,8 +1,26 @@
 "use strict";
 
-// Firebaseから機能を取り出す（HTMLで準備した窓口を使います）
-const db = window.db;
-const { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, deleteDoc } = window.dbFunctions;
+let db, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, deleteDoc;
+
+function initFirebaseRefs() {
+    if (window.dbFunctions) {
+        db = window.db;
+        ({ collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, deleteDoc } = window.dbFunctions);
+        return true;
+    }
+    return false;
+}
+
+// 起動時にFirebaseの準備ができるまで待機する
+window.onload = () => {
+    if (initFirebaseRefs()) {
+        setupStats();
+        setupComments();
+    } else {
+        // まだ準備ができていなければ100ミリ秒待って再試行
+        setTimeout(window.onload, 100);
+    }
+};
 
 // --- 統計機能（視聴回数などは、一旦今まで通りlocalStorageで動かします） ---
 function setupStats() {
