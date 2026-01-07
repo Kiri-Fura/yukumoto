@@ -1,15 +1,15 @@
 "use strict";
 
-// 1. Firebaseの設定（HTML側で window に入れたものを使います）
+// Firebaseから機能を取り出す（HTMLで準備した窓口を使います）
 const db = window.db;
-const { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } = window.dbFunctions;
+const { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, deleteDoc } = window.dbFunctions;
 
-// --- チャンネル登録・視聴回数 (ここも将来的にDB化できますが、一旦維持します) ---
-let views = Number(localStorage.getItem('viewCount')) || 0;
-let subscribers = Number(localStorage.getItem('subCount')) || 100;
-let isSubscribed = localStorage.getItem('isSubscribed') === 'true';
-
+// --- 統計機能（視聴回数などは、一旦今まで通りlocalStorageで動かします） ---
 function setupStats() {
+    let views = Number(localStorage.getItem('viewCount')) || 0;
+    let subscribers = Number(localStorage.getItem('subCount')) || 100;
+    let isSubscribed = localStorage.getItem('isSubscribed') === 'true';
+
     const viewElement = document.getElementById('view-count');
     const subBtn = document.getElementById('subscribe-btn');
     const subCountElement = document.getElementById('sub-count');
@@ -44,7 +44,7 @@ function setupStats() {
     }
 }
 
-// --- コメント機能 (Firebase版) ---
+// --- コメント機能（ここがFirebase版です！） ---
 let isAdmin = localStorage.getItem('isAdmin') === 'true';
 
 function setupComments() {
@@ -55,13 +55,14 @@ function setupComments() {
 
     if (!list || !countDisplay) return;
 
-    // 2. クラウド上のコメントを監視（リアルタイム更新）
+    // 1. クラウド(Firestore)からコメントを自動取得する設定
     const q = query(collection(db, "comments"), orderBy("createdAt", "desc"));
     
+    // 誰かが投稿すると、この中身が自動で動きます（リアルタイム同期）
     onSnapshot(q, (snapshot) => {
         const commentsData = [];
-        snapshot.forEach((doc) => {
-            commentsData.push({ id: doc.id, ...doc.data() });
+        snapshot.forEach((snapshotDoc) => {
+            commentsData.push({ id: snapshotDoc.id, ...snapshotDoc.data() });
         });
 
         countDisplay.innerText = commentsData.length.toString();
@@ -69,35 +70,46 @@ function setupComments() {
         list.innerHTML = commentsData.map((c) => `
             <div class="comment-item">
                 <div class="comment-text">
-                    <h4>${c.userName}</h4>
+                    <h4>${c.userName || "名無しさん"}</h4>
                     <p>${c.text}</p>
                     ${isAdmin ? `<button class="delete-btn" onclick="deleteComment('${c.id}')">削除</button>` : ''}
                 </div>
             </div>
-        `).join(''); // Firebase側で降順取得するので、reverseは不要
+        `).join('');
     });
 
-    // 3. 送信ボタンをクラウド保存に変更
+    // 2. 送信ボタンを押した時、クラウドに保存する
     if (submitBtn) {
         submitBtn.onclick = async () => {
             if (input.value.trim() === "") return;
 
             try {
                 await addDoc(collection(db, "comments"), {
-                    userName: "ゆくもと（ゲスト）", // ここを好きな名前に
+                    userName: "ゲストさん", // ここをゆくもと（自分）にしてもOK
                     text: input.value,
-                    createdAt: serverTimestamp() // サーバー時間で保存
+                    createdAt: serverTimestamp() // サーバーの時間を使う
                 });
-                input.value = "";
+                input.value = ""; // 入力欄を空にする
             } catch (e) {
-                console.error("保存失敗:", e);
-                alert("コメントの送信に失敗しました。");
+                console.error("保存に失敗しました:", e);
             }
         };
     }
 }
 
-// 起動時に実行
+// 管理者用の削除機能
+window.deleteComment = async (id) => {
+    if (confirm("このコメントを完全に削除しますか？")) {
+        try {
+            await deleteDoc(doc(db, "comments", id));
+            // 削除された瞬間、画面も自動で更新されます
+        } catch (e) {
+            console.error("削除失敗:", e);
+        }
+    }
+};
+
+// 読み込み時に全部実行
 window.onload = () => {
     setupStats();
     setupComments();
