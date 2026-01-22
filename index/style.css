@@ -43,7 +43,7 @@ body {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 20px;
+  padding: 120px;
   
   /* 幅を300px程度に固定。これで縦長すぎる状態が解消されます */
   width: 300px;
