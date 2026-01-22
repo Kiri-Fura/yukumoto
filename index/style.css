@@ -57,12 +57,6 @@ body {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.member-mcskin {
-  width:100px;
-  height:200px;
-  object-fit:contain;
-}
-
 .member-p{
   padding-left:30px;
   padding-top:20px;
