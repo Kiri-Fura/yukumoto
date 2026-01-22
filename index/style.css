@@ -39,39 +39,31 @@ body {
   text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
-/* 親要素：ここで「横に並べる」指示を出しています */
 .member-container {
-  display: flex;
-  flex-wrap: wrap;       /* 画面幅が狭くなったら自動で折り返す */
-  justify-content: center; /* カードを中央に寄せる */
-  gap: 20px;            /* カード同士の隙間 */
+  display: flex !important;    /* 強制的にFlexboxにする */
+  flex-direction: row !important; /* 強制的に横方向に並べる */
+  flex-wrap: wrap !important;  /* 折り返しを許可 */
+  justify-content: center;
+  gap: 20px;
   padding: 20px;
+  width: 100%;
 }
 
-/* 子要素：各メンバーのカード */
 .card {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
-  
-  /* --- ここが重要 --- */
-  width: 280px;           /* 60pxから280pxに広げました */
-  flex-shrink: 0;         /* 画面が狭くてもカードが潰されないように固定 */
-  box-sizing: border-box; /* パディングを含めて幅を計算 */
-  /* ----------------- */
 
+  /* 文字が縦長にならないよう、幅を「固定」で指定します */
+  width: 280px !important;    /* 60pxから変更し、!importantで最優先にする */
+  min-width: 250px !important; /* これ以上絶対に細くならないようにする */
+  
+  flex: 0 0 auto;             /* Flexboxの中で勝手に縮んだり伸びたりさせない */
+  box-sizing: border-box; 
   text-align: center;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* 自己紹介文の調整（読みやすくします） */
-.card p {
-  font-size: 14px;
-  line-height: 1.6;
-  text-align: left;       /* 左寄せにすると読みやすくなります */
-  margin-top: 10px;
-  color: #444;
-}
 
 
