@@ -40,24 +40,34 @@ body {
 }
 
 .member-container {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:20px;
-  padding:20px
+  display: flex;
+  flex-wrap: wrap;       /* 幅がいっぱいになったら折り返す */
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
 }
 
 .card {
-  background-color:#fff;
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:20px;
-  width:60px;
-  text-align:center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  
+  /* --- 修正箇所 --- */
+  width: 280px;           /* 60文字の自己紹介が入る適切な幅 */
+  box-sizing: border-box; /* paddingを含めて幅を計算する設定 */
+  /* ---------------- */
+
+  text-align: center;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.member-p{
-  padding-left:30px;
-  padding-top:20px;
+/* 自己紹介文のスタイル（必要に応じて） */
+.card p {
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;      /* 自己紹介は左寄せの方が見やすいです */
+  margin-top: 10px;
+  color: #555;
 }
+
