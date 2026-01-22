@@ -44,16 +44,17 @@ body {
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
-  
-  /* 幅を300px程度に固定。これで縦長すぎる状態が解消されます */
-  width: 456px;
-  
-  /* パディングで幅が膨らまないようにする */
-  box-sizing: border-box; 
-  
+
+  /* --- ここを確実に修正 --- */
+  width: 280px;            /* 基本の幅 */
+  min-width: 280px;        /* これより小さくなるのを禁止する */
+  box-sizing: border-box;  /* paddingによるサイズ膨張を防ぐ */
+  /* ------------------------ */
+
   text-align: center;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+
 
 /* 自己紹介文を読みやすくする設定 */
 .card p {
