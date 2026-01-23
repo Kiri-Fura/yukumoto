@@ -87,3 +87,74 @@ body {
   overflow: hidden;
 }en;
 }
+
+/* プロフィールエリア */
+.channel-profile {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 16px;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-icon img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; /* 丸くする */
+    object-fit: cover;
+}
+
+.profile-details h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.handle {
+    color: #606060;
+    margin: 4px 0;
+}
+
+.sub-button {
+    background-color: #0f0f0f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* タブメニュー */
+.channel-tabs {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 24px;
+    padding: 0 16px;
+}
+
+.tab-item {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #606060;
+    padding: 12px 0;
+    cursor: pointer;
+}
+
+.tab-item.active {
+    color: #0f0f0f;
+    border-bottom: 2px solid #0f0f0f;
+}
+
+.section-divider {
+    border: 0;
+    border-top: 1px solid #e5e5e5;
+    margin: 0;
+}
