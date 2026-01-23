@@ -40,54 +40,41 @@ body {
 }
 
 /* 動画一覧を並べる親要素 */
+/* 動画が並ぶグリッドの設定 */
 .video-grid {
-  display: grid;
-  /* 1画面に最低250pxの幅で、入るだけ並べる設定 */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;          /* カード同士の隙間 */
-  padding: 20px;
-  max-width: 1200px;  /* 全体の幅が広がりすぎないように制限 */
-  margin: 0 auto;     /* 中央寄せ */
+    display: grid;
+    /* 画面の幅に合わせて、最低250pxの幅で自動で列を作る */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-/* カード全体の見た目 */
-.video-card {
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
+/* 動画1つずつの枠 */
+.video-item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
 }
 
-.video-card:hover {
-  transform: translateY(-5px); /* ホバーで少し浮く */
+/* 動画のサムネイル（iframeなど） */
+.video-item iframe, 
+.video-item img {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* YouTubeの標準比率 */
+    border-radius: 12px; /* 角を少し丸くする */
+    background-color: #000;
 }
 
-/* サムネイル画像（ここが「でかすぎる」のを防ぐポイント） */
-.video-thumbnail {
-  width: 100%;        /* カードの横幅に合わせる */
-  aspect-ratio: 16 / 9; /* YouTubeと同じ16:9の比率にする */
-  object-fit: cover;  /* 画像を無理やり伸ばさず綺麗に切り抜く */
-  display: block;
+/* 動画のタイトル */
+.video-item h3 {
+    font-size: 16px;
+    margin: 10px 0 5px 0;
+    /* 2行を超えたら「...」で省略する設定 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
-
-/* 動画タイトルの部分 */
-.video-info {
-  padding: 12px;
-}
-
-.video-info h3 {
-  font-size: 1rem;
-  margin: 0;
-  color: #333;
-  /* 2行目以降を「...」にする設定（長いタイトルの場合） */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}en;
-}
-
 /* プロフィールエリア */
 /* プロフィール詳細のテキスト設定 */
 .profile-details {
