@@ -3,7 +3,7 @@ const videos = [
   {
     title: "test",
     // さきほど作成した直リンクをここに貼ります
-    thumbnail: "", 
+    thumbnail: "https://lh3.googleusercontent.com/u/0/d/1MGd7qc3cvCn1q20VJz5VpZU0xxRTaeIa", 
     url: "" // 実際の動画URLがあれば
   }
 ];
