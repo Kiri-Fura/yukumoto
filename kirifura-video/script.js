@@ -20,14 +20,13 @@ function renderVideos() {
   }
 
   // HTMLの中身を書き換える
-  grid.innerHTML = myVideos.map(video => `
-    <div class="video-card" onclick="location.href='${video.url}'" style="cursor: pointer;">
-      <img src="${video.thumbnail}" class="video-thumbnail" alt="thumbnail">
-      <div class="video-info">
-        <h3>${video.title}</h3>
-      </div>
-    </div>
-  `).join('');
+ // 表示する部分
+list.innerHTML = videos.map(v => `
+  <div class="video-item">
+    <img src="${v.thumbnailUrl || 'https://lh3.googleusercontent.com/u/0/d/1MGd7qc3cvCn1q20VJz5VpZU0xxRTaeIa'}" alt="${v.title}">
+    <h3>${v.title}</h3>
+  </div>
+`).join('');
 }
 
 // 3. ページが全部読み込まれたら実行する
