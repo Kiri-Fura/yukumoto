@@ -43,19 +43,24 @@ body {
 /* 動画が並ぶグリッドの設定 */
 .video-grid {
     display: grid;
-    /* 画面の幅に合わせて、最低250pxの幅で自動で列を作る */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* 横に並べる */
+    gap: 16px;
     padding: 20px;
 }
 
-/* 動画1つずつの枠 */
-.video-item {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
+.video-item img {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* YouTubeサイズ */
+    border-radius: 12px;
+    object-fit: cover;
+    background-color: #f0f0f0; /* 読み込み中用の色 */
 }
 
+.video-item h3 {
+    font-size: 16px;
+    margin-top: 8px;
+    color: #0f0f0f;
+}
 /* 動画のサムネイル（iframeなど） */
 .video-item iframe, 
 .video-item img {
