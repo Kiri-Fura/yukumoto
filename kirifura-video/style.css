@@ -112,3 +112,65 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+/* プロフィール全体の横並び設定 */
+.channel-profile {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.profile-container {
+    display: flex; /* 横に並べる */
+    align-items: flex-start;
+    gap: 30px; /* アイコンと文字の間隔 */
+}
+
+/* アイコンを丸く、大きくする */
+.profile-icon img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; /* これで丸くなります！ */
+    object-fit: cover;
+}
+
+/* 名前やハンドル名の文字設定 */
+.profile-details h1 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.handle {
+    color: #606060;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.description {
+    color: #606060;
+    font-size: 14px;
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* タブをボタンじゃなく「YouTube風」にする */
+.channel-tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.tab-item {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #606060;
+}
+
+.tab-item.active {
+    color: #000;
+    font-weight: bold;
+    border-bottom: 2px solid #000; /* 今いる場所に線を引く */
+}
