@@ -89,36 +89,34 @@ body {
 }
 
 /* プロフィールエリア */
-.channel-profile {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 16px;
-}
-
-.profile-container {
+/* プロフィール詳細のテキスト設定 */
+.profile-details {
     display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.profile-icon img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%; /* 丸くする */
-    object-fit: cover;
+    flex-direction: column; /* 上から下に並べる */
+    justify-content: center;
 }
 
 .profile-details h1 {
-    font-size: 36px;
+    font-size: 32px;
     margin: 0;
 }
 
 .handle {
     color: #606060;
+    font-size: 14px;
     margin: 4px 0;
 }
 
+/* 説明文のスタイル */
+.description {
+    color: #606060;
+    font-size: 14px;
+    margin: 10px 0; /* 上下に少し隙間を作る */
+    line-height: 1.5; /* 行の間隔を広げて読みやすくする */
+}
+
 .sub-button {
+    width: fit-content; /* ボタンの幅を文字に合わせる */
     background-color: #0f0f0f;
     color: white;
     border: none;
@@ -126,35 +124,4 @@ body {
     border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
-}
-
-/* タブメニュー */
-.channel-tabs {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    gap: 24px;
-    padding: 0 16px;
-}
-
-.tab-item {
-    background: none;
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
-    color: #606060;
-    padding: 12px 0;
-    cursor: pointer;
-}
-
-.tab-item.active {
-    color: #0f0f0f;
-    border-bottom: 2px solid #0f0f0f;
-}
-
-.section-divider {
-    border: 0;
-    border-top: 1px solid #e5e5e5;
-    margin: 0;
 }
