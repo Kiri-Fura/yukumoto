@@ -1,10 +1,12 @@
+"use strict";
+
 // 1. 動画のデータ（デバッグ用）
 const videos = [
   {
     title: "test",
-    // さきほど作成した直リンクをここに貼ります
+    // 成功していれば、マイクラのアイコンとは別の画像が出るはずです
     thumbnail: "https://lh3.googleusercontent.com/u/0/d/1MGd7qc3cvCn1q20VJz5VpZU0xxRTaeIa", 
-    url: "https://lh3.googleusercontent.com/u/0/d/1MGd7qc3cvCn1q20VJz5VpZU0xxRTaeIa" // 実際の動画URLがあれば
+    url: "https://www.youtube.com" // テスト用にYouTubeなどのURL
   }
 ];
 
@@ -16,7 +18,7 @@ function renderVideos() {
   videoGrid.innerHTML = videos.map(v => `
     <div class="video-item">
       <a href="${v.url}" target="_blank">
-        <img src="${v.thumbnail |https://lh3.googleusercontent.com/u/0/d/1MGd7qc3cvCn1q20VJz5VpZU0xxRTaeIa| ''}" alt="${v.title}">
+        <img src="${v.thumbnail || 'https://via.placeholder.com/250x140'}" alt="${v.title}">
       </a>
       <div class="video-info">
         <h3>${v.title}</h3>
@@ -25,5 +27,7 @@ function renderVideos() {
   `).join('');
 }
 
-// 実行
-renderVideos();
+// 実行（HTMLが読み込まれてから動くようにonloadに入れます）
+window.onload = () => {
+  renderVideos();
+};
