@@ -9,26 +9,49 @@
   </head>
     
   <body>
- <nav class=navi>
-<ul>
-  <li><a href="https://kiri-fura.github.io/yukumoto/index/index.html">ゆくもと</a></li>
-  <li><a href=https://kiri-fura.github.io/yukumoto/kirifura-video/index.html>ぬるぷの動画</a></li>
-  <li><a href=https://kiri-fura.github.io/yukumoto/haruki-video/index.html>ハルキの動画</a></li>
-  <li><a href=https://kiri-fura.github.io/yukumoto/news/index.html>お知らせ</a></li>
-  <li><a href=https://kiri-fura.github.io/yukumoto/contact/index.html>お問い合わせ</a></li>
-</ul>
-</nav>
+  <nav class="navi">
+    <ul>
+      <li><a href="https://kiri-fura.github.io/yukumoto/index/index.html">ゆくもと</a></li>
+      <li><a href="https://kiri-fura.github.io/yukumoto/kirifura-video/index.html">ぬるぷの動画</a></li>
+      <li><a href="https://kiri-fura.github.io/yukumoto/haruki-video/index.html">ハルキの動画</a></li>
+      <li><a href="https://kiri-fura.github.io/yukumoto/news/index.html">お知らせ</a></li>
+      <li><a href="https://kiri-fura.github.io/yukumoto/contact/index.html">お問い合わせ</a></li>
+    </ul>
+  </nav>
 
-<header class="hedder-image">
-  <div class="hedder-connect">
-    <h1>きりふらの動画</h1>
+  <header class="hedder-image">
+    </header>
+
+  <section class="channel-profile">
+    <div class="profile-container">
+      <div class="profile-icon">
+        <img src="YOUR_ICON_URL" alt="アイコン"> 
+      </div>
+      <div class="profile-details">
+        <h1>きりふら</h1>
+        <p class="handle">@kiri-fura • チャンネル登録者数 <span id="sub-count">100</span>人</p>
+        <p class="description">ここに短い紹介文を入れられます。実況動画を投稿中！</p>
+        <button id="subscribe-btn" class="sub-button">チャンネル登録</button>
+      </div>
     </div>
-  </header>
-
-<section class="video_section">
-  <h2>投稿した動画一覧です。</h2>
-  <div id="video-grid" class="video-grid"></div>
   </section>
+
+  <nav class="channel-tabs">
+    <button class="tab-item active">ホーム</button>
+    <button class="tab-item">動画</button>
+    <button class="tab-item">ショート</button>
+    <button class="tab-item">コミュニティ</button>
+  </nav>
+
+  <hr class="section-divider">
+
+  <section class="video_section">
+    <h2>動画</h2>
+    <div id="video-grid" class="video-grid"></div>
+  </section>
+
+  <script src="./script.js"></script>
+</body>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/react/19.1.1/cjs/react.production.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/19.1.1/cjs/react-dom.production.min.js'></script><script  src="./script.js"></script>
 
