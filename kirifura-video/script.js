@@ -1,33 +1,29 @@
-"use strict";
-
-// 1. 動画のデータを定義（= を忘れないように注意！）
-const myVideos = [
-    {
-    title: "test",//動画タイトル
-    thumbnail: "", // 前回のドライブ直リンクなど
-    url: ""//動画url
+// 1. 動画のデータ（デバッグ用）
+const videos = [
+  {
+    title: "test",
+    // さきほど作成した直リンクをここに貼ります
+    thumbnail: "", 
+    url: "" // 実際の動画URLがあれば
   }
 ];
 
-// 2. 動画を画面に表示する関数
+// 2. 画面に表示する関数
 function renderVideos() {
-  const grid = document.getElementById('video-grid');
-  
-  // gridが見つからない場合はエラーを出して止める
-  if (!grid) {
-    console.error("エラー: HTMLの中に 'video-grid' というIDが見つかりません。");
-    return;
-  }
+  const videoGrid = document.getElementById('video-grid');
+  if (!videoGrid) return;
 
-  // HTMLの中身を書き換える
- // 表示する部分
-list.innerHTML = videos.map(v => `
-  <div class="video-item">
-    <img src="${v.thumbnailUrl || 'https://lh3.googleusercontent.com/u/0/d/1MGd7qc3cvCn1q20VJz5VpZU0xxRTaeIa'}" alt="${v.title}">
-    <h3>${v.title}</h3>
-  </div>
-`).join('');
+  videoGrid.innerHTML = videos.map(v => `
+    <div class="video-item">
+      <a href="${v.url}" target="_blank">
+        <img src="${v.thumbnail |https://lh3.googleusercontent.com/u/0/d/1MGd7qc3cvCn1q20VJz5VpZU0xxRTaeIa| ''}" alt="${v.title}">
+      </a>
+      <div class="video-info">
+        <h3>${v.title}</h3>
+      </div>
+    </div>
+  `).join('');
 }
 
-// 3. ページが全部読み込まれたら実行する
-window.addEventListener('load', renderVideos);
+// 実行
+renderVideos();
