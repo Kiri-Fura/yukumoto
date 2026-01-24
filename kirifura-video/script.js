@@ -25,10 +25,22 @@ async function fetchCount() {
 }
 
 // 4. ボタンで増やす
+// ボタンを押した時の処理
 subscribeBtn.addEventListener('click', async () => {
+    // 現在の数字を取得
     const current = parseInt(subCountElement.innerText.replace(/,/g, ''));
-    const next = current + 1;
+    let next;
+    let isSubscribing = !subscribeBtn.classList.contains('subscribed');
 
+    if (isSubscribing) {
+        // 【登録処理】 +1 する
+        next = current + 1;
+    } else {
+        // 【解除処理】 -1 する
+        next = current - 1;
+    }
+
+    // Supabaseを更新
     const { error } = await supabaseClient
         .from('channel_status_nullp')
         .update({ sub_count: next })
@@ -36,9 +48,20 @@ subscribeBtn.addEventListener('click', async () => {
 
     if (!error) {
         subCountElement.innerText = next.toLocaleString();
-        subscribeBtn.innerText = "登録済み";
-        subscribeBtn.disabled = true;
-        alert("登録完了！Supabaseの数字も増えたはずです！");
+        
+        if (isSubscribing) {
+            // 登録完了の状態へ
+            subscribeBtn.innerText = "登録済み（解除する）";
+            subscribeBtn.classList.add('subscribed');
+            subscribeBtn.style.backgroundColor = "#ccc"; // グレーにする
+        } else {
+            // 解除完了の状態へ（元に戻す）
+            subscribeBtn.innerText = "チャンネル登録";
+            subscribeBtn.classList.remove('subscribed');
+            subscribeBtn.style.backgroundColor = "#ff0000"; // 赤に戻す
+        }
+    } else {
+        alert("エラーが発生しました");
     }
 });
 
