@@ -1,19 +1,20 @@
 "use strict";
 
-// 1. 変数の定義（中身を「' '」で囲むのがポイントです）
 const SUPABASE_URL = 'https://uhnkthmhgiszbalrzlsn.supabase.co'; 
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVobmt0aG1oZ2lzemJhbHJ6bHNuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxNzc4NDcsImV4cCI6MjA4NDc1Mzg0N30.uyzrvVaWsEx52VcHbTSV5bzfQrq3jIBUAhkqDjcEVcQ';
-
-// 2. 接続（定義した変数名をそのまま入れます。最後に「);」を忘れずに！）
+const SUPABASE_ANON_KEY = 'あなたの鍵';
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// --- 以下、前回の続き（読み込みやボタンの処理） ---
 const subCountElement = document.getElementById('sub-count');
 const subscribeBtn = document.getElementById('subscribe-btn');
 
-// 3. 数字を読み込む
-async function fetchCount() {
-    const { data, error } = await supabaseClient
+// --- 1. 状態を管理する変数 ---
+// ブラウザのメモ帳に 'isSubscribed' という名前でデータがあるか確認する
+let userHasSubscribed = localStorage.getItem('isSubscribed') === 'true';
+
+// --- 2. 初期表示の切り替え ---
+async function init() {
+    // DBから最新の数字を持ってくる
+    const { data } = await supabaseClient
         .from('channel_status_nullp')
         .select('sub_count')
         .eq('id', 1)
@@ -22,25 +23,26 @@ async function fetchCount() {
     if (data) {
         subCountElement.innerText = data.sub_count.toLocaleString();
     }
+
+    // もし過去に登録していたら、ボタンを「解除」の状態にしておく
+    if (userHasSubscribed) {
+        setSubscribedStyle();
+    }
 }
 
-// 4. ボタンで増やす
-// ボタンを押した時の処理
+// --- 3. ボタンを押した時の処理 ---
 subscribeBtn.addEventListener('click', async () => {
-    // 現在の数字を取得
     const current = parseInt(subCountElement.innerText.replace(/,/g, ''));
     let next;
-    let isSubscribing = !subscribeBtn.classList.contains('subscribed');
 
-    if (isSubscribing) {
-        // 【登録処理】 +1 する
+    if (!userHasSubscribed) {
+        // 【登録】 +1 する
         next = current + 1;
     } else {
-        // 【解除処理】 -1 する
+        // 【解除】 -1 する
         next = current - 1;
     }
 
-    // Supabaseを更新
     const { error } = await supabaseClient
         .from('channel_status_nullp')
         .update({ sub_count: next })
@@ -49,22 +51,35 @@ subscribeBtn.addEventListener('click', async () => {
     if (!error) {
         subCountElement.innerText = next.toLocaleString();
         
-        if (isSubscribing) {
-            // 登録完了の状態へ
-            subscribeBtn.innerText = "登録済み（解除する）";
-            subscribeBtn.classList.add('subscribed');
-            subscribeBtn.style.backgroundColor = "#ccc"; // グレーにする
+        // 状態を反転させる
+        userHasSubscribed = !userHasSubscribed;
+        
+        // ブラウザのメモ帳（LocalStorage）に保存する
+        localStorage.setItem('isSubscribed', userHasSubscribed);
+
+        // 見た目を更新
+        if (userHasSubscribed) {
+            setSubscribedStyle();
         } else {
-            // 解除完了の状態へ（元に戻す）
-            subscribeBtn.innerText = "チャンネル登録";
-            subscribeBtn.classList.remove('subscribed');
-            subscribeBtn.style.backgroundColor = "#ff0000"; // 赤に戻す
+            setUnsubscribedStyle();
         }
-    } else {
-        alert("エラーが発生しました");
     }
 });
 
+// 見た目の設定関数
+function setSubscribedStyle() {
+    subscribeBtn.innerText = "登録済み (解除)";
+    subscribeBtn.style.backgroundColor = "#ccc";
+    subscribeBtn.style.color = "#333";
+}
+
+function setUnsubscribedStyle() {
+    subscribeBtn.innerText = "チャンネル登録";
+    subscribeBtn.style.backgroundColor = "#ff0000";
+    subscribeBtn.style.color = "#fff";
+}
+
+init();
 fetchCount();
 // 1. 動画のデータ（デバッグ用）
 const videos = [
