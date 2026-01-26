@@ -1,5 +1,12 @@
 "use strict";
 const newsData = [
+
+                    {
+        date: "2026/1/17",
+        category: "社長のBlog",
+        title: "第28回WBCで優勝しました！",
+        content: "第28回WBCで無事優勝することができました！※WBCとは....World Black Companyの略だよ！世界でブラック企業のブラックさで競い合う！ゆくストは28年連続で優勝してるよ！"
+        },
   
                   {
         date: "2026/1/14",
