@@ -1,37 +1,56 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
   <head>
     <meta charset="UTF-8">
-    <title>ゆくもとホームページ|ハルキの動画</title>
+    <title>ゆくもとホームページ|ぬるぷの動画</title>
     <link rel="stylesheet" href="./style.css">
 
   </head>
     
   <body>
-   <nav class=navi>
-<ul>
-  <li><a href="https://kiri-fura.github.io/yukumoto/index/index.html">ゆくもと</a></li>
-  <li><a href=https://kiri-fura.github.io/yukumoto/kirifura-video/index.html>ぬるぷの動画</a></li>
-  <li><a href=https://kiri-fura.github.io/yukumoto/haruki-video/index.html>ハルキの動画</a></li>
-  <li><a href=https://kiri-fura.github.io/yukumoto/news/index.html>お知らせ</a></li>
-  <li><a href=https://kiri-fura.github.io/yukumoto/contact/index.html>お問い合わせ</a></li>
-</ul>
-</nav>
-    
+  <nav class="navi">
+    <ul>
+      <li><a href="https://kiri-fura.github.io/yukumoto/index/index.html">ゆくもと</a></li>
+      <li><a href="https://kiri-fura.github.io/yukumoto/kirifura-video/index.html">ぬるぷの動画</a></li>
+      <li><a href="https://kiri-fura.github.io/yukumoto/haruki-video/index.html">ハルキの動画</a></li>
+      <li><a href="https://kiri-fura.github.io/yukumoto/news/index.html">お知らせ</a></li>
+      <li><a href="https://kiri-fura.github.io/yukumoto/contact/index.html">お問い合わせ</a></li>
+    </ul>
+  </nav>
 
-<header class="hedder-image">
-  <div class="hedder-connect">
-    <h1>ハルキの動画</h1>
+  <header class="hedder-image">
+    </header>
+
+  <section class="channel-profile">
+    <div class="profile-container">
+      <div class="profile-icon">
+        <img src="https://lh3.googleusercontent.com/d/1FchX3DOvJV82SJ6gSTg4Oum9oqoHq5UX" alt="アイコン"> 
+      </div>
+      <div class="profile-details">
+        <h1>ハルキ</h1>
+        <p class="handle">@haruki_gg • チャンネル登録者数 <span id="sub-count">100</span>人</p>
+        <p class="description">ハルキです。</p>
+        <button id="subscribe-btn" class="sub-button">チャンネル登録</button>
+      </div>
     </div>
-  </header>
-
-<section class="video_section">
-  <h2>投稿した動画一覧です。</h2>
-  <div id="video-grid" class="video-grid"></div>
   </section>
-<script  src="./script.js"></script>
 
-  </body>
-  
+  <nav class="channel-tabs">
+    <button class="tab-item active">ホーム</button>
+    <button class="tab-item">動画</button>
+    <button class="tab-item">ショート</button>
+    <button class="tab-item">コミュニティ</button>
+  </nav>
+
+  <hr class="section-divider">
+
+  <section class="video_section">
+    <h2>動画</h2>
+    <div id="video-grid" class="video-grid"></div>
+  </section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+</body>
 </html>
