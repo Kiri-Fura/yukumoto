@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
+<html lang="ja">
+<head>
     <meta charset="UTF-8">
-    <title>redirect</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>リダイレクト</title>
+    <!-- 0秒後に指定URLへ転送（JS無効時用） -->
+    <meta http-equiv="refresh" content="0;url=https://kiri-fura.github.io/yukumoto/index/index.html">
     <script>
-      window.location.href('https://kiri-fura.github.io/yukumoto/index/index.html')
+        // JSによる即時転送
+        window.location.replace('https://kiri-fura.github.io/yukumoto/index/index.html');
     </script>
-  </head>
-    
-  <body>
-  <h1>このページはリダイレクト専用です。<h1>
-<a href="https://kiri-fura.github.io/yukumoto/index/index.html">リダイレクトしない場合はここをクリックしてください。</a>
-
-  </body>
-  
+</head>
+<body>
+    <h1>このページはリダイレクト専用です。</h1>
+    <a href="https://kiri-fura.github.io/yukumoto/index/index.html">リダイレクトしない場合はここをクリックしてください。</a>
+</body>
 </html>
