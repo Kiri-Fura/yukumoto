@@ -1,6 +1,6 @@
 "use strict";
 
-// 1. Supabaseの設定（あなたのURLと鍵）
+// 1. Supabaseの設定
 const SUPABASE_URL = 'https://uhnkthmhgiszbalrzlsn.supabase.co'; 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVobmt0aG1oZ2lzemJhbHJ6bHNuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxNzc4NDcsImV4cCI6MjA4NDc1Mzg0N30.uyzrvVaWsEx52VcHbTSV5bzfQrq3jIBUAhkqDjcEVcQ';
 
@@ -9,10 +9,10 @@ const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_
 const subCountElement = document.getElementById('sub-count');
 const subscribeBtn = document.getElementById('subscribe-btn');
 
-// ブラウザのメモ帳を確認（登録済みかどうかの記録）
 let userHasSubscribed = localStorage.getItem('isSubscribed') === 'true';
+// ★連打ガード用の変数
+let isProcessing = false;
 
-// --- 数字を読み込んで表示を整える関数 ---
 async function fetchCount() {
     const { data, error } = await supabaseClient
         .from('channel_status_nullp')
@@ -24,23 +24,20 @@ async function fetchCount() {
         subCountElement.innerText = data.sub_count.toLocaleString();
     }
 
-    // 既に登録済みなら見た目を変える
     if (userHasSubscribed) {
         setSubscribedStyle();
-           alert("チャンネル登録しました！");
+        // ※ここにあったalertは削除しました（ページを開くたびに出るのを防ぐため）
     }
 }
 
-// --- ボタンを押した時の処理 ---
+// --- ボタンを押した時の処理（ここを差し替え） ---
 subscribeBtn.addEventListener('click', async () => {
-    const current = parseInt(subCountElement.innerText.replace(/,/g, ''));
-    let next;
+    // 1. 処理中なら何もしない
+    if (isProcessing) return;
+    isProcessing = true;
 
-    if (!userHasSubscribed) {
-        next = current + 1; // 登録（＋1）
-    } else {
-        next = current - 1; // 解除（ー1）
-    }
+    const current = parseInt(subCountElement.innerText.replace(/,/g, ''));
+    let next = !userHasSubscribed ? current + 1 : current - 1;
 
     const { error } = await supabaseClient
         .from('channel_status_nullp')
@@ -49,21 +46,22 @@ subscribeBtn.addEventListener('click', async () => {
 
     if (!error) {
         subCountElement.innerText = next.toLocaleString();
-        
-        // 状態を反転させて保存
         userHasSubscribed = !userHasSubscribed;
         localStorage.setItem('isSubscribed', userHasSubscribed);
 
-        // 見た目を更新
         if (userHasSubscribed) {
             setSubscribedStyle();
+            // 2. 登録した時だけアラートを出す（これが連打ストッパーになります）
+            alert("チャンネル登録しました！");
         } else {
             setUnsubscribedStyle();
         }
     }
+
+    // 3. ガードを解除
+    isProcessing = false;
 });
 
-// 見た目の切り替え
 function setSubscribedStyle() {
     subscribeBtn.innerText = "登録済み (解除)";
     subscribeBtn.style.backgroundColor = "#ccc";
@@ -74,17 +72,13 @@ function setUnsubscribedStyle() {
     subscribeBtn.style.backgroundColor = "#ff0000";
 }
 
-// 最初に実行！
 fetchCount();
-// 1. 動画のデータ（デバッグ用）
-const videos = [
-];
 
-// 2. 画面に表示する関数
+// --- 以下、renderVideosなどは変更なし ---
+const videos = [];
 function renderVideos() {
   const videoGrid = document.getElementById('video-grid');
   if (!videoGrid) return;
-
   videoGrid.innerHTML = videos.map(v => `
     <div class="video-item">
       <a href="${v.url}" target="_blank">
@@ -96,8 +90,4 @@ function renderVideos() {
     </div>
   `).join('');
 }
-
-// 実行（HTMLが読み込まれてから動くようにonloadに入れます）
-window.onload = () => {
-  renderVideos();
-};
+window.onload = () => { renderVideos(); };
