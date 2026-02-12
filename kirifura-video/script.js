@@ -27,6 +27,7 @@ async function fetchCount() {
     // 既に登録済みなら見た目を変える
     if (userHasSubscribed) {
         setSubscribedStyle();
+           alert("チャンネル登録しました！");
     }
 }
 
