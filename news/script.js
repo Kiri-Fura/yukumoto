@@ -1,5 +1,11 @@
 "use strict";
 const newsData = [
+                     {
+        date: "2026/2/16",
+        category: "動画",
+        title: "ほんとにごめんなさい",
+        content: "動画投稿できてなくて本当に申し訳ないと思います。今週中には頑張ります。"
+        },
 
                     {
         date: "2026/1/27",
