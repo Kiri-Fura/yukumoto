@@ -1,5 +1,11 @@
 "use strict";
 const newsData = [
+  {
+        date: "2026/2/16",
+        category: "社長のBlog",
+        title: "ありがとう！",
+        content: "HIKAKINの登録者数越しました！ありがとう！m(_ _)m"
+        },
                      {
         date: "2026/2/16",
         category: "動画",
