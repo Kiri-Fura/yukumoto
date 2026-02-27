@@ -1,5 +1,11 @@
 "use strict";
 const newsData = [
+        {
+        date: "2026/2/28",
+        category: "社長のBlog",
+        title: "大事なお知らせ",
+        content: "https://docs.google.com/document/d/1OmXYwN2PidEJDq9r8sPtaLToBIalyCDNKbVfv9XS7Jw/edit?tab=t.0#heading=h.bl3mnmhskyod"
+        },
     {
         date: "2026/2/25",
         category: "社長のBlog",
