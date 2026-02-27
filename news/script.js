@@ -1,5 +1,5 @@
 "use strict";
-const newsData = [
+const newsData = 
         {
         date: "2026/2/28",
         category: "社長のBlog",
@@ -10,7 +10,7 @@ const newsData = [
         date: "2026/2/25",
         category: "社長のBlog",
         title: "ありがとう！(2回目)",
-        content: "HIKAKINってしょぼいね〜wwwwwチャンネル登録者数たったの1900万人だぜ☆俺は100兆だからな〜〜〜(嘘w)"
+        content: "HIKAKINってしょぼいね〜wwwwチャンネル登録者数たったの1900万人だぜ☆俺は100兆だからな〜嘘w(世界の総人口は約80億人)"
         },
   {
         date: "2026/2/16",
