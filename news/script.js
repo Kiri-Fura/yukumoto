@@ -1,5 +1,5 @@
 "use strict";
-const newsData =
+const newsData ={
         {
         date: "2026/2/28",
         category: "社長のBlog",
