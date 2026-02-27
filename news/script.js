@@ -4,7 +4,7 @@ const newsData = [
         date: "2026/2/25",
         category: "社長のBlog",
         title: "ありがとう！(2回目)",
-        content: "HIKAKINってしょぼいね〜wwwwwチャンネル登録者数たったの1900万人だぜ☆俺は100兆だからな〜〜〜"
+        content: "HIKAKINってしょぼいね〜wwwwwチャンネル登録者数たったの1900万人だぜ☆俺は100兆だからな〜〜〜(嘘w)"
         },
   {
         date: "2026/2/16",
